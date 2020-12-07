@@ -3,7 +3,7 @@
 This is project for analyze disaster data from Figure Eight to build a model for an API that classifies disaster messages.
 
 ## Project Descriptions
-#The project has three componants which are:
+The project has three componants which are:
 
 1. The folder data : contains the original message dataset , The script process_data.py which bulid ETL to the data and saves this to a database file.
 
