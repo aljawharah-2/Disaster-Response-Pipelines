@@ -5,11 +5,11 @@ This is project for analyze disaster data from Figure Eight to build a model for
 ## Project Descriptions
 The project has three componants which are:
 
-1. The folder data : contains the original message dataset , The script process_data.py which bulid ETL to the data and saves this to a database file.
+1. The folder [data](https://github.com/aljawharah-20/Disaster-Response-Pipelines/tree/main/data) : contains the original message dataset , The script process_data.py which bulid ETL to the data and saves this to a database file.
 
-2. The folder models : contains the script train_classifier.py to train the model.
+2. The folder [models](https://github.com/aljawharah-20/Disaster-Response-Pipelines/tree/main/models) : contains the script train_classifier.py to train the model.
 
-3. The folder app : contains the Flask webapp that categorizes new messages.
+3. The folder [app](https://github.com/aljawharah-20/Disaster-Response-Pipelines/tree/main/app) : contains the Flask webapp that categorizes new messages.
 
 ## Instructions <a name="instructions"></a>
 
