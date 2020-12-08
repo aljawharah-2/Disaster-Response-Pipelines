@@ -27,7 +27,7 @@ To execute the app follow the instructions:
 3. Go to http://0.0.0.0:3001/
 
 ## Screenshots
-![alt text](Disaster-Response-Pipelines/screenshots/Screen Shot 1442-04-23 at 10.42.53 AM.png)
-![alt text](Disaster-Response-Pipelines/screenshots/Screen Shot 1442-04-23 at 10.42.59 AM.png)
-![alt text](Disaster-Response-Pipelines/screenshots/Screen Shot 1442-04-23 at 10.43.03 AM.png)
+![](Disaster-Response-Pipelines/screenshots/%20Screen Shot 1442-04-23 at 10.42.53 AM.png)
+![](Disaster-Response-Pipelines/screenshots/%20Screen Shot 1442-04-23 at 10.42.59 AM.png)
+![](Disaster-Response-Pipelines/screenshots/%20Screen Shot 1442-04-23 at 10.43.03 AM.png)
 
