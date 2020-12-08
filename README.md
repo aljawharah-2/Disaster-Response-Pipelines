@@ -27,7 +27,7 @@ To execute the app follow the instructions:
 3. Go to http://0.0.0.0:3001/
 
 ## Screenshots
-![](Disaster-Response-Pipelines/screenshots/%20Screen Shot 1442-04-23 at 10.42.53 AM.png)
-![](Disaster-Response-Pipelines/screenshots/%20Screen Shot 1442-04-23 at 10.42.59 AM.png)
-![](Disaster-Response-Pipelines/screenshots/%20Screen Shot 1442-04-23 at 10.43.03 AM.png)
+![](https://github.com/aljawharah-20/Disaster-Response-Pipelines/blob/main/screenshots/Screen%20Shot%201442-04-23%20at%2010.42.53%20AM.png)
+![](https://github.com/aljawharah-20/Disaster-Response-Pipelines/blob/main/screenshots/Screen%20Shot%201442-04-23%20at%2010.42.59%20AM.png)
+![](https://github.com/aljawharah-20/Disaster-Response-Pipelines/blob/main/screenshots/Screen%20Shot%201442-04-23%20at%2010.43.03%20AM.png)
 
