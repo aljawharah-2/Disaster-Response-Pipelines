@@ -3,11 +3,7 @@ import plotly
 import pandas as pd
 
 from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize, sent_tokenize
-from nltk import pos_tag, word_tokenize
-import nltk
-
-from sklearn.base import BaseEstimator, TransformerMixin
+from nltk.tokenize import word_tokenize
 
 from flask import Flask
 from flask import render_template, request, jsonify
@@ -17,24 +13,6 @@ from sqlalchemy import create_engine
 
 
 app = Flask(__name__)
-
-class StartingVerbExtractor(BaseEstimator, TransformerMixin):
-
-    def starting_verb(self, text):
-        sentence_list = nltk.sent_tokenize(text)
-        for sentence in sentence_list:
-            pos_tags = nltk.pos_tag(tokenize(sentence))
-            first_word, first_tag = pos_tags[0]
-            if first_tag in ['VB', 'VBP'] or first_word == 'RT':
-                return True
-        return False
-
-    def fit(self, X, y=None):
-        return self
-
-    def transform(self, X):
-        X_tagged = pd.Series(X).apply(self.starting_verb)
-        return pd.DataFrame(X_tagged)
 
 def tokenize(text):
     tokens = word_tokenize(text)
@@ -48,8 +26,8 @@ def tokenize(text):
     return clean_tokens
 
 # load data
-engine = create_engine('sqlite:///../data/disaster_response_db.db')
-df = pd.read_sql_table('df', engine)
+engine = create_engine('sqlite:///../data/DisasterResponse.db')
+df = pd.read_sql_table('disaster_messages_tbl', engine)
 
 # load model
 model = joblib.load("../models/classifier.pkl")
@@ -65,14 +43,17 @@ def index():
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
-    category_names = df.iloc[:,4:].columns
-    category_boolean = (df.iloc[:,4:] != 0).sum().values
-    
-    
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
+    catg_nam = df.iloc[:, 4:].columns
+    bol = df.iloc[:, 4:] != 0
+    cat_bol = bol.sum().values
+
+    sum_cat = df.iloc[:, 4:].sum()
+    top_cat = sum_cat.sort_values(ascending=False)[1:11]
+    top_cat_names = list(top_cat.index)
+
     graphs = [
-            # GRAPH 1 - genre graph
         {
             'data': [
                 Bar(
@@ -91,23 +72,39 @@ def index():
                 }
             }
         },
-            # GRAPH 2 - category graph    
         {
             'data': [
                 Bar(
-                    x=category_names,
-                    y=category_boolean
+                    x=catg_nam,
+                    y=cat_bol
                 )
             ],
 
             'layout': {
-                'title': 'Distribution of Message Categories',
+                'title': 'Message Categories distribution',
                 'yaxis': {
                     'title': "Count"
                 },
                 'xaxis': {
-                    'title': "Category",
-                    'tickangle': 35
+                    'title': "Categories"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=top_cat_names,
+                    y=top_cat
+                )
+            ],
+
+            'layout': {
+                'title': 'Top 10 Categories',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Categories"
                 }
             }
         }
@@ -141,7 +138,6 @@ def go():
 
 def main():
     app.run(host='0.0.0.0', port=3001, debug=True)
-
 
 if __name__ == '__main__':
     main()
