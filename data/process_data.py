@@ -60,6 +60,9 @@ def clean_data(df):
     # Drop the duplicates.
     df.drop_duplicates(inplace=True)
 
+    # support only 2 categories.
+    df.loc[:,"related"] = df["related"].map(lambda x: min(1, x))
+
     return df
 
 
